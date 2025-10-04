@@ -16,7 +16,7 @@ class DeterministicRng:
     Deterministic generator that replays predefined uniform variates.
 
     Args:
-        uniforms: Sequence of uniform random variates in the (0, 1] interval.
+        uniforms: Sequence of uniform random variates in the [0, 1) interval.
     """
 
     def __init__(self, uniforms: Iterable[float]) -> None:
@@ -142,6 +142,7 @@ def test_multi_interval_samples_follow_inverse_cdf(
         ([[1.0, 1.0]], [1.0], "one-dimensional"),
         ([1.0, 1.0], [[1.0, 1.0]], "one-dimensional"),
         ([1.0, 0.0], [1.0, 1.0], "final duration must be positive"),
+        ([1.0, math.nan], [1.0, 1.0], "finite or math.inf"),
         ([1.0], [0.0], "strictly positive"),
         ([1.0], [math.nan], "finite"),
     ],
@@ -155,6 +156,18 @@ def test_invalid_parameters_raise(
 
     with pytest.raises(ValueError, match=error_message):
         PiecewiseExponential(durations, rates)
+
+
+def test_infinite_final_duration_is_supported() -> None:
+    """
+    Ensure an infinite final duration emulates the R implementation's open tail.
+    """
+
+    dist = PiecewiseExponential([1.0, math.inf], [0.5, 1.0])
+    draws = dist.sample(size=5)
+
+    assert draws.shape == (5,)
+    assert np.all(np.isfinite(draws))
 
 
 def test_sample_supports_scalar_and_shape() -> None:
