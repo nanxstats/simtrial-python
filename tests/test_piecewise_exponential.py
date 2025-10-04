@@ -4,6 +4,7 @@ from typing import Iterable, Sequence, cast
 
 import numpy as np
 import pytest
+from numpy.typing import NDArray
 
 import simtrial.piecewise_exponential as piecewise_module
 from simtrial.piecewise_exponential import PiecewiseExponential, set_random_seed
@@ -164,7 +165,7 @@ def test_infinite_final_duration_is_supported() -> None:
     """
 
     dist = PiecewiseExponential([1.0, math.inf], [0.5, 1.0])
-    draws = dist.sample(size=5)
+    draws = cast(NDArray[np.float64], dist.sample(size=5))
 
     assert draws.shape == (5,)
     assert np.all(np.isfinite(draws))
