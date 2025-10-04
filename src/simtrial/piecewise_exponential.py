@@ -63,7 +63,9 @@ class PiecewiseExponential:
     Piecewise exponential sampler based on the inverse cumulative distribution.
 
     Args:
-        durations: Interval durations for each hazard rate segment.
+        durations: Interval durations for each hazard rate segment; all but the
+            final duration must be finite and strictly positive, while the last
+            entry may be set to ``math.inf`` to represent an open-ended tail.
         rates: Hazard rates aligned with the provided durations.
         rng: Optional random number generator.
 
@@ -96,11 +98,15 @@ class PiecewiseExponential:
             raise ValueError("durations and rates must have the same length")
         if not np.all(np.isfinite(self._durations[:-1])):
             raise ValueError(
-                "durations must be finite except possibly the last interval"
+                "durations must be finite except possibly the last interval, "
+                "which may extend to infinity"
             )
         if np.any(self._durations[:-1] <= 0):
             raise ValueError("durations before the final interval must be positive")
-        if self._durations[-1] <= 0:
+        last_duration = float(self._durations[-1])
+        if math.isnan(last_duration):
+            raise ValueError("final duration must be finite or math.inf")
+        if last_duration <= 0:
             raise ValueError("final duration must be positive")
         if np.any(~np.isfinite(self._rates)):
             raise ValueError("rates must be finite")
