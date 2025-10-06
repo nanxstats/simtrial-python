@@ -1,5 +1,10 @@
 # Changelog
 
+## simtrial-python 0.1.0
+
+- Increment version number to 0.1.0 to follow semantic versioning
+  best practices (#6).
+
 ## simtrial-python 0.0.1
 
 ### New features
