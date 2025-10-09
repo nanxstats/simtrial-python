@@ -1,5 +1,12 @@
 # Changelog
 
+## simtrial-python 0.1.1
+
+### Maintenance
+
+- Added Python 3.14 support and set as default development environment (#7).
+- Updated GitHub Actions workflows to use the latest `checkout` and `setup-python` versions (#7).
+
 ## simtrial-python 0.1.0
 
 - Increment version number to 0.1.0 to follow semantic versioning
