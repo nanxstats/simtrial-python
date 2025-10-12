@@ -1,5 +1,14 @@
 # Changelog
 
+## simtrial-python 0.1.2
+
+### Linting
+
+- Added ruff linter configuration to `pyproject.toml` with popular rule sets
+  including pycodestyle, Pyflakes, pyupgrade, flake8-bugbear, flake8-simplify,
+  and isort (#10).
+- Fixed `ruff check` linting issues such as PEP 585 (#10).
+
 ## simtrial-python 0.1.1
 
 ### Maintenance
