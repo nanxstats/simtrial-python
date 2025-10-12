@@ -1,6 +1,7 @@
 import math
+from collections.abc import Iterable, Sequence
 from pathlib import Path
-from typing import Iterable, Sequence, cast
+from typing import cast
 
 import numpy as np
 import pytest
