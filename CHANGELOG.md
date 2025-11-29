@@ -1,5 +1,13 @@
 # Changelog
 
+## simtrial-python 0.1.3
+
+### Maintenance
+
+- Added GitHub Actions workflow to run `ruff check` for code linting (#13).
+- Updated GitHub Actions workflows to use `actions/checkout@v6` (#13).
+- Updated badges in `README.md` (#13).
+
 ## simtrial-python 0.1.2
 
 ### Linting
