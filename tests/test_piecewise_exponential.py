@@ -6,7 +6,10 @@ from typing import cast
 import numpy as np
 import pytest
 from numpy.typing import NDArray
-from pytest_r_snapshot import RSnapshotSettings, SnapshotMode
+from pytest_r_snapshot import (  # type: ignore[import-untyped]
+    RSnapshotSettings,
+    SnapshotMode,
+)
 
 import simtrial.piecewise_exponential as piecewise_module
 from simtrial.piecewise_exponential import PiecewiseExponential, set_random_seed
