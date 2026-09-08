@@ -9,13 +9,13 @@ dependencies = [
     "numpy>=2.0.0",
 ]
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 
 classifiers = [
     "Development Status :: 3 - Alpha",
 
     "Intended Audience :: Science/Research",
-
-    "License :: OSI Approved :: MIT License",
 
     "Operating System :: OS Independent",
 
@@ -39,8 +39,8 @@ Issues = "https://github.com/nanxstats/simtrial-python/issues"
 Changelog = "https://github.com/nanxstats/simtrial-python/blob/main/CHANGELOG.md"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
