@@ -6,7 +6,7 @@
 
 - Update GitHub Actions workflows to `actions/checkout@v7` and
   `actions/setup-python@v7` and refresh the disabled Codecov step to
-  `codecov/codecov-action@v7`.
+  `codecov/codecov-action@v7` (#20).
 
 ## simtrial-python 0.1.4
 
