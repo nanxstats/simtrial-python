@@ -1,6 +1,6 @@
 [project]
 name = "simtrial"
-version = "0.1.4"
+version = "0.1.5"
 description = "Clinical trial simulation"
 authors = [
     { name = "Nan Xiao", email = "me@nanx.me" }
